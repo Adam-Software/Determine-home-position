@@ -28,12 +28,12 @@ SwitchBothLeg = False
 
 
 ReadPosArray = CalcPosServo()
-   
+
 HeadPos = ReadPosArray.CalcHead(GoalPosHeadPer, GoalPosNeckPer)
 print('HeadPos')
 print(int(HeadPos[0]))
 print(int(HeadPos[1]))
- 
+
 ArmsPos = ReadPosArray.CalcArms(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, False)
 ArmsPosElbow = ReadPosArray.CalcArms(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, True)
 
@@ -41,4 +41,3 @@ print('ArmsPos')
 print(ArmsPos)
 print('ArmsPosElbow')
 print(ArmsPosElbow)
-
