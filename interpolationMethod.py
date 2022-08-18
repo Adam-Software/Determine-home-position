@@ -1,7 +1,7 @@
 from ReadHomPos import ReadHomPos
 from calcPostiotionsArms import CalcPositionsArms
 
-class calcPosServo():
+class CalcPosServo():
     def __init__(self):
         self._ReadPosArray = ReadHomPos()
         self._HomePositionArray = self._ReadPosArray.ReadServRange()
@@ -14,23 +14,22 @@ class calcPosServo():
         HeadRangeMax = self._HomePositionArray[0][1][0]
         NeckRangeMin = self._HomePositionArray[0][2][0]
         NeckRangeMax = self._HomePositionArray[0][3][0]
-    
+
         CalcGoalPosHead = ((HeadRangeMax - HeadRangeMin) * GoalPosHeadPer) + HeadRangeMin
         CalcGoalPosNeck = ((NeckRangeMax - NeckRangeMin) * GoalPosNeckPer) + NeckRangeMin
-     
+
         return CalcGoalPosHead, CalcGoalPosNeck
 
-   def CalcArms(self, ArmShoulderAnglRightPer, ArmForearmAnglRightPer, ArmElbowTopAnglRightPer, ArmElbowBottAnglRightPer, ArmElbowAnglRightPer,
-                ArmShoulderAnglLeftPer, ArmForearmAnglLeftPer, ArmElbowTopAnglLeftPer, ArmElbowBottAnglLeftPer, ArmElbowAnglLeftPer, SwitchBothElbow):
-
+    def CalcArms(self, ArmShoulderAnglRightPer, ArmForearmAnglRightPer, ArmElbowTopAnglRightPer, ArmElbowBottAnglRightPer, ArmElbowAnglRightPer, 
+       ArmShoulderAnglLeftPer, ArmForearmAnglLeftPer, ArmElbowTopAnglLeftPer, ArmElbowBottAnglLeftPer, ArmElbowAnglLeftPer, SwitchBothElbow):
         if SwitchBothElbow == False:
             ArmRight = self._PositionArms.CalcArmsRight(ArmShoulderAnglRightPer, ArmForearmAnglRightPer, ArmElbowTopAnglRightPer, ArmElbowBottAnglRightPer)
             ArmLeft = self._PositionArms.CalcArmsLeft(ArmShoulderAnglLeftPer, ArmForearmAnglLeftPer, ArmElbowTopAnglLeftPer, ArmElbowBottAnglLeftPer)
         else:
-            ArmRight = self._PositionArms.CalcArmsRight(ArmShoulderAnglRightPer, ArmForearmAnglRightPer, ArmElbowAnglRightPer)
-            ArmLeft = self._PositionArms.CalcArmsLeft(ArmShoulderAnglLeftPer, ArmForearmAnglLeftPer,ArmElbowAnglLeftPer)
+            ArmRight = self._PositionArms.CalcArmsRightElbow(ArmShoulderAnglRightPer, ArmForearmAnglRightPer, ArmElbowAnglRightPer)
+            ArmLeft = self._PositionArms.CalcArmsLeftElbow(ArmShoulderAnglLeftPer, ArmForearmAnglLeftPer, ArmElbowAnglLeftPer)
 
-        return ('RightArm', ArmRight[0], ArmRight[1], ArmRight[2], ArmRight[3], 'LeftArm', ArmLeft[0], ArmLeft[1], ArmLeft[2], ArmLeft[3]) 
+        return ('RightArm', ArmRight[0], ArmRight[1], ArmRight[2], ArmRight[3], 'LeftArm', ArmLeft[0], ArmLeft[1], ArmLeft[2], ArmLeft[3])
 
     def CalcPress(self, PressTopAnglPer, PressBottAnglPer):
 

@@ -4,7 +4,7 @@ class ReadHomPos():
     def ReadServRange(self):
         
         line = []
-        with open('/home/pi/adam/positionrange.txt', 'r') as f:
+        with open('positionrange.txt', 'r') as f:
             line = f.read() 
         line = line.split('\n')
         data = []

@@ -1,4 +1,4 @@
-from InterpolationMethod import calcPosServo
+from interpolationMethod import CalcPosServo
 
 GoalPosHeadPer = 0.2
 GoalPosNeckPer = 0.2
@@ -27,8 +27,17 @@ HightRightLegPer = 0
 SwitchBothLeg = False
 
 
-ReadPosArray = calcPosServo()
-   
+ReadPosArray = CalcPosServo()
+
 HeadPos = ReadPosArray.CalcHead(GoalPosHeadPer, GoalPosNeckPer)
+print('HeadPos')
 print(int(HeadPos[0]))
 print(int(HeadPos[1]))
+
+ArmsPos = ReadPosArray.CalcArms(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, False)
+ArmsPosElbow = ReadPosArray.CalcArms(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, True)
+
+print('ArmsPos')
+print(ArmsPos)
+print('ArmsPosElbow')
+print(ArmsPosElbow)
